@@ -40,7 +40,7 @@ download_release() {
 
 	# TODO: Adapt the release URL convention for tutor
 	# Example URL: https://github.com/overhangio/tutor/releases/download/v18.1.3/tutor-Linux_x86_64
-	url="$GH_REPO/releases/download/$version/$TOOL_NAME-$(uname -s)_$(uname -m)"
+	url="$GH_REPO/releases/download/v$version/$TOOL_NAME-$(uname -s)_$(uname -m)"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url. $TOOL_NAME binaries are available only for Linux x64 and Mac OS x64."
