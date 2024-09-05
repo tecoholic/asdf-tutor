@@ -10,8 +10,7 @@ source "${plugin_dir}/lib/utils.bash"
 
 mkdir -p "$ASDF_DOWNLOAD_PATH"
 
-if [ "$ASDF_INSTALL_VERSION" == "nightly" ]
-then
+if [ "$ASDF_INSTALL_VERSION" == "nightly" ]; then
 	git clone $GH_REPO -b nightly "$ASDF_DOWNLOAD_PATH"
 else
 	release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME"

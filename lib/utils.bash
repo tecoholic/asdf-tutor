@@ -62,6 +62,7 @@ install_version() {
 			cp -r "$ASDF_DOWNLOAD_PATH"/* "$ASDF_INSTALL_PATH"
 			cd "$ASDF_INSTALL_PATH"
 			python -m venv .venv
+			# shellcheck source=/dev/null
 			source .venv/bin/activate
 			pip install ".[full]" --quiet --require-virtualenv
 
@@ -69,7 +70,7 @@ install_version() {
 			chmod +x .venv/bin/tutor
 			ln -s "$ASDF_INSTALL_PATH/.venv/bin/tutor" "$install_path/$tool_cmd"
 
-		 	test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable"
+			test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable"
 			echo "$TOOL_NAME $version installation was successful!"
 		) || (
 			rm -rf "$install_path"
