@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/tecoholic/asdf-tutor/compare/v1.0.0...v1.1.0) (2024-09-05)
+
+
+### Features
+
+* adds support for tutor-nightly ([d7381a0](https://github.com/tecoholic/asdf-tutor/commit/d7381a0c50fbb9e55c4594bbdfdabdd966e6a416))
+
 ## 1.0.0 (2024-09-04)
 
 
