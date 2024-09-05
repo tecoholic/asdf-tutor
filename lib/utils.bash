@@ -50,7 +50,8 @@ install_version() {
 	local install_type="$1"
 	local version="$2"
 	local install_path="${3%/bin}/bin"
-	local tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+	local tool_cmd
+	tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 
 	if [ "$install_type" != "version" ]; then
 		fail "asdf-$TOOL_NAME supports release installs or 'nightly' only"
@@ -59,7 +60,7 @@ install_version() {
 	if [ "$version" == "nightly" ]; then
 		(
 			cp -r "$ASDF_DOWNLOAD_PATH"/* "$ASDF_INSTALL_PATH"
-			cd $ASDF_INSTALL_PATH
+			cd "$ASDF_INSTALL_PATH"
 			python -m venv .venv
 			source .venv/bin/activate
 			pip install ".[full]" --quiet --require-virtualenv

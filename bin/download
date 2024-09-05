@@ -12,11 +12,11 @@ mkdir -p "$ASDF_DOWNLOAD_PATH"
 
 if [ "$ASDF_INSTALL_VERSION" == "nightly" ]
 then
-	git clone $GH_REPO -b nightly $ASDF_DOWNLOAD_PATH
+	git clone $GH_REPO -b nightly "$ASDF_DOWNLOAD_PATH"
 else
 	release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME"
 
 	# Download binary to the download directory
 	download_release "$ASDF_INSTALL_VERSION" "$release_file"
-	chmod +x $release_file
+	chmod +x "$release_file"
 fi
