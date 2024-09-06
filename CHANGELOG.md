@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/tecoholic/asdf-tutor/compare/v1.1.0...v1.2.0) (2024-09-06)
+
+
+### Features
+
+* use venv for all tutor releases instead of binary ([ed9f0e1](https://github.com/tecoholic/asdf-tutor/commit/ed9f0e167403534ce919574e03b3e5da4ce4d14a))
+
 ## [1.1.0](https://github.com/tecoholic/asdf-tutor/compare/v1.0.0...v1.1.0) (2024-09-05)
 
 
