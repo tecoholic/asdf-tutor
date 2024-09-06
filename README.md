@@ -10,6 +10,7 @@
 
 - [Dependencies](#dependencies)
 - [Install](#install)
+- [Usage with mise](#usage-mise)
 - [Contributing](#contributing)
 - [License](#license)
 
