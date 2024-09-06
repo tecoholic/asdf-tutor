@@ -57,37 +57,22 @@ install_version() {
 		fail "asdf-$TOOL_NAME supports release installs or 'nightly' only"
 	fi
 
-	if [ "$version" == "nightly" ]; then
-		(
-			cp -r "$ASDF_DOWNLOAD_PATH"/* "$ASDF_INSTALL_PATH"
-			cd "$ASDF_INSTALL_PATH"
-			python -m venv .venv
-			# shellcheck source=/dev/null
-			source .venv/bin/activate
-			pip install ".[full]" --quiet --require-virtualenv
+	(
+		cp -r "$ASDF_DOWNLOAD_PATH"/* "$ASDF_INSTALL_PATH"
+		cd "$ASDF_INSTALL_PATH"
+		python -m venv .venv
+		# shellcheck source=/dev/null
+		source .venv/bin/activate
+		pip install ".[full]" --quiet --require-virtualenv
 
-			echo "contents of $ASDF_INSTALL_PATH/bin"
-			chmod +x .venv/bin/tutor
-			ln -s "$ASDF_INSTALL_PATH/.venv/bin/tutor" "$install_path/$tool_cmd"
+		echo "contents of $ASDF_INSTALL_PATH/bin"
+		chmod +x .venv/bin/tutor
+		ln -s "$ASDF_INSTALL_PATH/.venv/bin/tutor" "$install_path/$tool_cmd"
 
-			test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable"
-			echo "$TOOL_NAME $version installation was successful!"
-		) || (
-			rm -rf "$install_path"
-			fail "An error occurred while installing $TOOL_NAME $version."
-		)
-	else
-		(
-			mkdir -p "$install_path"
-			cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
-
-			# TODO: Assert tutor executable exists.
-			test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
-
-			echo "$TOOL_NAME $version installation was successful!"
-		) || (
-			rm -rf "$install_path"
-			fail "An error occurred while installing $TOOL_NAME $version."
-		)
-	fi
+		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable"
+		echo "$TOOL_NAME $version installation was successful!"
+	) || (
+		rm -rf "$install_path"
+		fail "An error occurred while installing $TOOL_NAME $version."
+	)
 }
